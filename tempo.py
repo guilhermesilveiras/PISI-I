@@ -11,3 +11,7 @@ class WeatherApp(App):
         api_key = 'c1617eb3022d2f85cf2920060284b1c5'
         base_url = 'http://api.weatherstack.com/'
         complete_url = f'{base_url}current?access_key={api_key}&query={cidade}' 
+    
+    def build(self):
+        layout = BoxLayout (orientation = 'vertical')
+        
