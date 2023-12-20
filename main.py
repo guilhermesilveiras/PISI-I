@@ -21,7 +21,7 @@ class WeatherApp(App):
 
     def build(self):
         layout = BoxLayout(orientation='vertical')
-        self.label = Label(text='Olá! Seja bem vindo ao "Como está o tempo?", o aplicativo que te informa a previsão do tempo para os próximos dias.')
+        self.label = Label(text='Olá! Seja bem vindo ao "Como está o tempo?", o aplicativo que te informa a leitura do tempo atual!')
         self.textinput = TextInput(text='Digite a cidade aqui')
         button = Button(text='Como está o tempo?')
         button.bind(on_press=self.update_label)
