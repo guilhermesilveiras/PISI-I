@@ -64,15 +64,15 @@ class WeatherApp(App):
         weather = self.pegar_clima(cidade)
         self.label.text = weather
 
-    def update_label_wind(self, instance):
+    def update_label_vento(self, instance):
         cidade = self.textinput.text
-        wind_speed = self.get_wind_speed(cidade)
-        self.label.text = wind_speed
+        velocidadevento = self.velocidade_vento(cidade)
+        self.label.text = velocidadevento
 
-    def update_label_humidity(self, instance):
+    def update_label_umidade(self, instance):
         cidade = self.textinput.text
-        humidity = self.get_humidity(cidade)
-        self.label.text = humidity
+        umidadelocal = self.umidade(cidade)
+        self.label.text = umidadelocal
 
 if __name__ == '__main__':
     WeatherApp().run()
