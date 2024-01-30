@@ -26,7 +26,7 @@ class WeatherApp(App):
         button = Button(text='Como está o tempo?')
         button.bind(on_press=self.update_label)
         layout.add_widget(self.label)
-        layout.add_widget(self.textinput)
+        layout.add_widget(self.textinput) # < limitar esse input depois?
         layout.add_widget(button)
         return layout
     
