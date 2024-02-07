@@ -27,17 +27,21 @@ BoxLayout:
         id: city_input
         hint_text: "Informe o nome da cidade"
         pos_hint: {"center_x": 0.5}
+        text: "Digite a cidade aqui para verificar a sua temperatura."
     MDRaisedButton:
         text: "Como está o tempo?"
         on_release: app.update_weather(city_input.text)
         pos_hint: {"center_x": 0.5}
-        md_bg_color: 1, 0.5, 0, 1
+        md_bg_color: 0, 0.7, 1, 0.9
+    AsyncImage:
+        id: weatherimage
+        source: "https://cdn.iconscout.com/icon/free/png-256/free-sun-bright-rays-sunny-weather-33960.png"
     MDLabel:
         text: app.weather
         halign: "center"
         font_size: "18sp"
         theme_text_color: "Custom"
-        text_color: 1, 0, 0, 1
+        text_color: 0, 0.7, 1, 0.9
 """)
 
     def update_weather(self, city_name):
