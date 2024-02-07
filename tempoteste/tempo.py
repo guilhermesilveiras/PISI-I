@@ -55,6 +55,7 @@ class WeatherApp(App):
         layout.add_widget(self.label)
         layout.add_widget(self.textinput)  # <<< problema no input?
         layout.add_widget(button_temp)
+        layout.add_widget(button_humidity )
         layout.add_widget(button_wind)
         layout.add_widget(button_humidity)
         return layout
