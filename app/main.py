@@ -14,7 +14,10 @@ class WeatherApp:
             return 'Cidade não encontrada.'
         else:
             temperatura = data.get('current').get('temperature')
-            return f'A temperatura atual em {cidade} é {temperatura}ºC.'
+            umidade = data.get('current').get('humidity')
+            velocidade_vento = data.get('current').get('wind_speed')
+            weather_icons_url = data.get('current').get('weather_icons')[0]
+            return f'A temperatura atual em {cidade} é {temperatura}ºC, a umidade é de {umidade}% e a velocidade dos ventos é de {velocidade_vento} km/h.'
 
 class MainApp(MDApp):
     weather = StringProperty("")
@@ -27,15 +30,13 @@ BoxLayout:
         id: city_input
         hint_text: "Informe o nome da cidade"
         pos_hint: {"center_x": 0.5}
-        text: "Digite a cidade aqui para verificar a sua temperatura."
+        text: ""
     MDRaisedButton:
         text: "Como está o tempo?"
         on_release: app.update_weather(city_input.text)
         pos_hint: {"center_x": 0.5}
         md_bg_color: 0, 0.7, 1, 0.9
-    AsyncImage:
-        id: weatherimage
-        source: "https://cdn.iconscout.com/icon/free/png-256/free-sun-bright-rays-sunny-weather-33960.png"
+
     MDLabel:
         text: app.weather
         halign: "center"
