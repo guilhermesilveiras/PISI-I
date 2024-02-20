@@ -2,6 +2,8 @@ import requests
 from kivy.lang import Builder
 from kivymd.app import MDApp
 from kivy.properties import StringProperty
+from kivy.core.window import Window
+from kivy.core.text import LabelBase
 
 class WeatherApp:
     def pegar_clima(self, cidade):

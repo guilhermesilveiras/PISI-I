@@ -136,6 +136,9 @@ MDFloatLayout:
 
 class WeatherApp(MDApp):
 
+
+    
+
     api_key = 'b7c6eaa62d6e881ee25b2c42994ce00a'
 
 
@@ -147,40 +150,16 @@ class WeatherApp(MDApp):
             url = f"https://api.openweathermap.org/data/2.5/weather?q={cidade}&appid={'b7c6eaa62d6e881ee25b2c42994ce00a'}"
             response = requests.get(url)
             x = response.json()
+            print(x)
             if x["cod"] != "404":
-                temperature = round(x["main"]["temp"]-273.15)
-                humidity = x["main"]["humidity"]
-                weather = x["weather"][0]["main"]
-                id = str(x["weather"][0]["id"])
-                wind_speed = round(x["wind"]["speed"]*18/5)
-                location = x["name"] + ", " + x["sys"]["country"]
-                self.root.ids.temperature.text = f"[b]{temperature}[/b]°C"
-                self.root.ids.weather.text = str(weather)
-                self.root.ids.humidity.text = f"{humidity}%"
-                self.root.ids.wind_speed.text = f"{wind_speed}"
-                self.root.ids.location.text = location
-                if id == "800":
-                    self.root.ids.weather_image_source = "icons/sun2.gif"
-                elif "200" <= id <= "232":
-                    self.root.ids.weather_image_source = "icons/storm.png"
-                elif "300" <= id <= "321" and "500" <= id <= "531":
-                    self.root.ids.weather_image_source = "icons/chuva.png"
-                elif "600" <= id <= "622":
-                    self.root.ids.weather_image.source = "icons/neve.png"
-                elif "701" <= id <= "781":
-                    self.roots.ids.weather_image.source = "icons/nevoa.png"
-                elif "801" <= id <= "804":
-                    self.root.ids.weather_image.source = "icons/nuvens.png"
-
+                pass
             else:
                 print("Cidade não encontrada!")
         except requests.ConnectionError:
             print('Sem conexão com a internet')
     
     def search_weather(self):
-        city_name = self.root.ids.city_name.text
-        if city_name != "":
-            self.pegar_clima(city_name)
+        self.pegar_clima("Recife")
 
 LabelBase.register(name="Roboto", fn_regular="fonts/Roboto-Regular.ttf")
 

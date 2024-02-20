@@ -153,17 +153,31 @@ class WeatherApp(MDApp):
             url = f"https://api.openweathermap.org/data/2.5/weather?q={cidade}&appid={'b7c6eaa62d6e881ee25b2c42994ce00a'}"
             response = requests.get(url)
             x = response.json()
-            print(x)
             if x["cod"] != "404":
-                pass
+                temperature = round(x["main"]["temp"]-273.15)
+                humidity = x["main"]["humidity"]
+                weather = x["weather"][0]["main"]
+                id = str(x["weather"][0]["id"])
+                wind_speed = round(x["wind"]["speed"]*18/5)
+                location = x["name"] + ", " + x["sys"]["country"]
+                self.root.ids.temperature.text = f"[b]{temperature}[/b]°C"
+                self.root.ids.weather.text = str(weather)
+                self.root.ids.humidity.text = f"{humidity}%"
+                self.root.ids.wind_speed.text = f"{wind_speed}Km/h"
+                self.root.ids.location.text = location
+                self.root.ids.weather_image.source = "icons/nuvens.png"
 
             else:
-                print("Cidade não encontrada!")
+                self.root.ids.temperature.text = "Cidade não encontrada!"
         except requests.ConnectionError:
-            print('Sem conexão com a internet')
+            self.root.ids.temperature.text = "Sem conexão com a internet"
     
     def search_weather(self):
-        self.pegar_clima("Salvador")
+        city_name = self.root.ids.city_name.text
+        if city_name.isdigit() or city_name == "":
+            print("Digite um nome de cidade válido!")
+        else:
+            self.pegar_clima(city_name)
 
 LabelBase.register(name="Roboto", fn_regular="fonts/Roboto-Regular.ttf")
 
