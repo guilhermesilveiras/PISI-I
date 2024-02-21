@@ -2,7 +2,6 @@ import requests
 from kivy.core.text import LabelBase
 from kivymd.app import MDApp
 from kivy.lang import Builder
-from kivy.core.window import Window
 from kivymd.font_definitions import theme_font_styles
 
 
@@ -138,7 +137,6 @@ MDFloatLayout:
 """
 
 class WeatherApp(MDApp):
-
 
     
 

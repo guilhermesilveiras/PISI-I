@@ -163,7 +163,7 @@ class WeatherApp(MDApp):
             print('Sem conexão com a internet')
     
     def search_weather(self):
-        self.pegar_clima("Salvador")
+        self.pegar_clima("São Paulo")
 
 LabelBase.register(name="Roboto", fn_regular="fonts/Roboto-Regular.ttf")
 
