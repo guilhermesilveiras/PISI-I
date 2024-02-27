@@ -24,7 +24,7 @@ MDFloatLayout:
     Image:
         id: weather_image
         source: ""
-        pos_hint: {"center_x": .5, "center_y": .77}
+        pos_hint: {"center_x": .5, "center_y": .79}
     MDLabel:
         id: temperature
         text: ""
