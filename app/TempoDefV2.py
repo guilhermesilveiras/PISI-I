@@ -179,8 +179,8 @@ MDFloatLayout:
     MDProgressBar:
         id: progress_bar
         size_hint: None, None
-        size: dp(150), dp(4)
-        pos_hint: {'center_x': .5, 'center_y': .29}
+        size: dp(150), dp(7)
+        pos_hint: {'center_x': .5, 'center_y': .025}
         color: 0, 0.6, 1, 1  # Azul claro
 """
 
@@ -243,7 +243,7 @@ class WeatherApp(MDApp):
             self.root.ids.progress_bar.start()
             # clock.schedule ver documentação depois
             Clock.schedule_once(self.update_progress_bar_once)
-            # cham a função pegar_clima
+            # chama função pegar_clima
             self.pegar_clima(city_name)
 
     def update_progress_bar_once(self, dt):
