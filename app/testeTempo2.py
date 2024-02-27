@@ -211,7 +211,22 @@ class WeatherApp(MDApp):
                 self.root.ids.humidity.text = f"{humidity}%"
                 self.root.ids.wind_speed.text = f"{wind_speed}Km/h"
                 self.root.ids.location.text = location
-                self.root.ids.weather_image.source = "icons/nuvens.png"
+                
+                if id == '800':
+                    self.root.ids.weather_image.source = "icons/sun5.png"
+                elif '200' <= id <= '232':
+                    self.root.ids.weather_image.source = "icons/storm.png"
+                elif '300' <= id <= '321' or '500' <= id <= '531':
+                    self.root.ids.weather_image.source = "icons/rain3.png"
+                elif '600' <= id <= '622':
+                    self.root.ids.weather_image.source = "icons/snow2.png"
+                elif '701' <= id <= '781':
+                    self.root.ids.weather_image.source = "icons/nevoa.png"
+                elif '801' <= id <= '804':
+                    self.root.ids.weather_image.source = "icons/cloudsdef.png"
+
+
+
             else:
                 self.root.ids.temperature.text = "Cidade não encontrada!"
         except requests.ConnectionError:
@@ -222,18 +237,17 @@ class WeatherApp(MDApp):
         if city_name.isdigit() or city_name == "":
             print("Digite um nome de cidade válido!")
         else:
-            # Reinicia a barra de progresso e inicia a animação apenas quando o botão é pressionado
+            # reiniciando a barra de progressão?
             self.root.ids.progress_bar.value = 0
             self.root.ids.progress_bar.color = (0, 0.6, 1, 1)  # Azul claro
             self.root.ids.progress_bar.start()
-            # Agendamos uma única chamada para a função de atualização da barra de progresso
+            # clock.schedule ver documentação depois
             Clock.schedule_once(self.update_progress_bar_once)
-            # Faz a requisição à API
+            # cham a função pegar_clima
             self.pegar_clima(city_name)
 
     def update_progress_bar_once(self, dt):
-        # Define uma função de atualização da barra de progresso para ser chamada uma única vez
-        Clock.schedule_interval(self.update_progress_bar, 0.05)  # Atualiza a cada 0.05 segundos
+        Clock.schedule_interval(self.update_progress_bar, 0.05)  # atualiza a cada 0.05 segundos
 
     def update_progress_bar(self, dt):
     # atualiza a barra com valores de 0 a 100
